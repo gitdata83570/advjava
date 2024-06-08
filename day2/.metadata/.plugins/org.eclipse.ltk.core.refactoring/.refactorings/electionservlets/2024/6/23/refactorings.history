@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename compilation unit &apos;com.sunbeam.utils.Dbutil.java&apos; to &apos;DbUtil.java&apos;&#x0D;&#x0A;- Original project: &apos;electionservlets&apos;&#x0D;&#x0A;- Original element: &apos;com.sunbeam.utils.Dbutil.java&apos;&#x0D;&#x0A;- Renamed element: &apos;com.sunbeam.utils.DbUtil.java&apos;" description="Rename compilation unit &apos;Dbutil.java&apos;" flags="2" id="org.eclipse.jdt.ui.rename.compilationunit" input="/src\/main\/java&lt;com.sunbeam.utils{Dbutil.java" name="DbUtil.java" references="false" stamp="1717848711646" version="1.0"/>
+</session>
