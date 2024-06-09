@@ -4,7 +4,7 @@ import java.io.IOException;
 
 
 import java.io.PrintWriter;
-
+import javax.servlet.ServletContext;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -44,13 +44,23 @@ public class LoginServlet extends HttpServlet {
 				
 				//System.out.println("Login Successful: " + user);
 				if(user.getRole().equals("voter")) { // voter login
-					resp.sendRedirect("candlist");
+//					String reUrl=resp.encodeRedirectURL("candlist");
+//					resp.sendRedirect(reUrl);
+					
+					//String reUrl = resp.encodeRedirectURL("candlist");
+				//	resp.sendRedirect("candlist");
 					
 					//RequestDispatcher rd = req.getRequestDispatcher("candlist");
 					//rd.forward(req, resp);
+					resp.sendRedirect("candlist");
+					
 				}
 				else { // admin login
+		
+//					String reUrl=resp.encodeRedirectURL("result");
+//					resp.sendRedirect(reUrl);
 					resp.sendRedirect("result");
+				
 				}
 			}
 			else {
@@ -62,6 +72,10 @@ public class LoginServlet extends HttpServlet {
 				out.println("<title>Login Failed</title>");
 				out.println("</head>");
 				out.println("<body>");
+				ServletContext app=this.getServletContext();
+				String appTitle=app.getInitParameter("AppTitle");
+				out.printf("<h3>%s</h3>", appTitle);
+				
 				out.println("Invalid email or password. <br/><br/>");
 				out.println("<a href='index.html'>Login Again</a>");
 				out.println("</body>");

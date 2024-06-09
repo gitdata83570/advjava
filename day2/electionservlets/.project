@@ -28,4 +28,16 @@
 		<nature>org.eclipse.jdt.core.javanature</nature>
 		<nature>org.eclipse.wst.jsdt.core.jsNature</nature>
 	</natures>
+	<linkedResources>
+		<link>
+			<name>src/main/webapp/images/delete.png</name>
+			<type>1</type>
+			<location>E:/Sunbeam GitData/advjava/day03/electionservlets/WebContent/images/delete.png</location>
+		</link>
+		<link>
+			<name>src/main/webapp/images/edit.png</name>
+			<type>1</type>
+			<location>E:/Sunbeam GitData/advjava/day03/electionservlets/WebContent/images/edit.png</location>
+		</link>
+	</linkedResources>
 </projectDescription>

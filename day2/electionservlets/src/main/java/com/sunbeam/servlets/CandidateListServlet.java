@@ -2,10 +2,12 @@ package com.sunbeam.servlets;
 
 import java.io.IOException;
 
+
+
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
-
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.Cookie;
@@ -42,8 +44,10 @@ public class CandidateListServlet extends HttpServlet {
 		out.println("<title>Candidates</title>");
 		out.println("</head>");
 		out.println("<body>");
-		out.println("<h3>Online Voting</h3>");
 		
+		ServletContext app=this.getServletContext();
+		String appTitle=app.getInitParameter("AppTitle");
+		out.printf("<h3>%s</h3>", appTitle);
 		String userName = "";
 		Cookie[] arr = req.getCookies();
 		if(arr != null) {
@@ -56,6 +60,10 @@ public class CandidateListServlet extends HttpServlet {
 		}
 		out.printf("Hello, %s<hr/>\n", userName);
 		
+		ServletContext ctx=this.getServletContext();
+		String message=(String) ctx.getAttribute("announcement");
+		if(message!=null)
+			out.printf("Announcement:%s<br/><br/>\n", message);
 		out.println("<form method='post' action='vote'>");
 		for (Candidate c : list) {
 			// <input type='radio' name='candidate' value='submit-value'/> display-label

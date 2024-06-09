@@ -1,7 +1,6 @@
 package com.sunbeam.dao;
 
 import java.sql.Connection;
-
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -9,9 +8,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-
-import com.sunbeam.utils.DbUtil;
 import com.sunbeam.pojo.Candidate;
+import com.sunbeam.utils.DbUtil;
 
 public class CandidateDaoImpl extends Dao implements CandidateDao {
 	public CandidateDaoImpl() throws Exception {
@@ -48,6 +46,23 @@ public class CandidateDaoImpl extends Dao implements CandidateDao {
 			int cnt = stmt.executeUpdate();
 			return cnt; 
 		} //stmt.close();
+	}
+	public Candidate findById(int id) throws Exception {
+		String sql = "SELECT * FROM candidates WHERE id=?";
+		try(PreparedStatement stmt = con.prepareStatement(sql)) {
+			stmt.setInt(1, id);
+			try(ResultSet rs = stmt.executeQuery()) {
+				if(rs.next()) {
+					id = rs.getInt("id");
+					String name = rs.getString("name");
+					String party = rs.getString("party");
+					int votes = rs.getInt("votes");
+					Candidate c = new Candidate(id, name, party, votes);
+					return c;
+				}
+			} // rs.close();
+		} // stmt.close();
+		return null;
 	}
 	public List<Candidate> findByParty(String givenParty) throws Exception {
 		List<Candidate> list = new ArrayList<>();
